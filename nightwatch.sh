@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [ -f /opt/nightwatch-tests.sh ]; then
-    chmod +x /opt/nightwatch-tests.sh
-    . /opt/nightwatch-tests.sh
-fi
+if [ -z "$FILELOCATION" ]; then export FILELOCATION="/opt/nightwatch"; fi
+if [ -z "$TESTSFILE" ]; then export TESTSFILE="nightwatch-tests.sh"; fi
 
-exit
+if [ -f $FILELOCATION/$TESTSFILE ]; then
+    chmod +x $FILELOCATION/$TESTSFILE
+    . $FILELOCATION/$TESTSFILE
+fi
